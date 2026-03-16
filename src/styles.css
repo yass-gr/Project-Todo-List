@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Google Sans", sans-serif;
+}
+
+:root {
+  --bg: #000000;
+  --icn: #f2bf05;
+  --icn-not: rgba(128, 128, 128, 0.479);
+  --bg2: #262626;
+}
+
+body {
+  background-color: #000000;
+  height: 100vh;
+}
+
+.tabs {
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.tabs button {
+  align-self: center;
+  background: none;
+  border: none;
+}
+.tabs button span {
+  font-size: 2rem;
+  color: var(--icn-not);
+}
+.tabSelected {
+  color: var(--icn) !important;
+}
+#search {
+  width: 90%;
+  background-color: var(--bg2);
+  border: none;
+  height: 6vh;
+  border-radius: 25px;
+  padding-left: 65px;
+  font-size: 1.3rem;
+  outline: none;
+}
+.searchBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.mdi-magnify {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--icn-not);
+  left: 45px;
+  top: 10px;
+}
