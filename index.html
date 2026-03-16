@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+"
+    />
+  <script defer src="main.js"></script></head>
+  <body>
+  <main>
+      <div class="tabs">
+      <button id="notes">
+        <span class="mdi mdi-book-multiple"></span>
+      </button>
+      <button id="todos">
+        <span class="mdi mdi-sticker-check-outline tabSelected"></span>
+      </button>
+    </div>
+    <div class="searchBar">
+      <span class="mdi mdi-magnify"></span>
+      <input type="search" id="search" placeholder="Search for tasks" />
+    </div>
+
+    <!-- Main Content Area -->
+    <section class="content-container">
+      <div class="slider-wrapper">
+        <div class="slider-track" id="slider-track">
+          <div id="todos-container" class="field"></div>
+          
+          <div id="notes-container" class="field"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAB Button -->
+    <button id="add-btn" class="fab-btn">
+      <span class="mdi mdi-plus"></span>
+    </button>
+
+    <!-- Add Group Modal -->
+    <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Add list</h2>
+          <button id="close-modal" class="modal-close">
+            <span class="mdi mdi-close"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="group-name-input" placeholder="Title" autofocus />
+          
+          <!-- Todo specific inputs -->
+          <div id="todo-input-section">
+            <div class="task-input-wrapper">
+              <input type="text" id="task-input" placeholder="Add task" />
+              <button id="add-task-btn" class="add-task-btn">
+                <span class="mdi mdi-plus"></span>
+              </button>
+            </div>
+            <div id="task-list-preview" class="task-list-preview"></div>
+          </div>
+
+          <!-- Note specific inputs -->
+          <div id="note-input-section" style="display: none; margin-top: 15px;">
+            <textarea id="note-content-input" placeholder="Type your notes here..." 
+                      style="width: 100%; height: 150px; background: transparent; border: none; border-bottom: 2px solid #444; color: #fff; font-size: 1.1rem; outline: none; resize: vertical; padding: 12px 0;"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="add-group-btn" class="add-group-btn">Add</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  </body>
+</html>
