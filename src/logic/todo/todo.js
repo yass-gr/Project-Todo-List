@@ -1,10 +1,12 @@
 import { createGroupCard } from "../../components/card.js";
 import { Group } from "./group.js";
-import { todos as allTodos } from "../../data/data.js";
 import { initSearch } from "../../components/search.js";
 import { loadTodos, saveTodos } from "../../data/storage.js";
 
-let todos = loadTodos() || [];
+const storedTodos = loadTodos();
+let todos = storedTodos 
+    ? storedTodos.map(t => new Group(t.name, t.tasks))
+    : [];
 
 export function initTodoLogic(todosContainer) {
     function renderGroups() {
@@ -18,7 +20,7 @@ export function initTodoLogic(todosContainer) {
                 todos = todos.filter(g => g !== group);
                 saveTodos(todos);
                 renderGroups();
-            });
+            }, () => saveTodos(todos));
             todosContainer.appendChild(card);
         });
     }

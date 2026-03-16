@@ -1,6 +1,6 @@
 import "../styles.css";
 
-export function createNoteCard(note, onDelete) {
+export function createNoteCard(note, onDelete, onSave) {
     console.log("createNoteCard called with:", note);
     const card = document.createElement("div");
     card.className = "note-card";
@@ -25,20 +25,28 @@ export function createNoteCard(note, onDelete) {
     noteContent.contentEditable = true;
     noteContent.textContent = note.content || "";
 
+    const noteDate = document.createElement("div");
+    noteDate.className = "note-date";
+    const date = note.createdAt instanceof Date ? note.createdAt : new Date(note.createdAt);
+    noteDate.textContent = date.toLocaleDateString() + " " + date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
     card.appendChild(deleteBtn);
     card.appendChild(noteTitle);
     card.appendChild(noteContent);
+    card.appendChild(noteDate);
 
     // Save title changes
     noteTitle.addEventListener("blur", () => {
         note.name = noteTitle.textContent || "Untitled Note";
         console.log("Title updated to:", note.name);
+        if (onSave) onSave();
     });
 
     // Save content changes
     noteContent.addEventListener("blur", () => {
         note.edit(noteContent.textContent);
         console.log("Content updated to:", note.content);
+        if (onSave) onSave();
     });
 
     // Optional: Handle Enter key to blur

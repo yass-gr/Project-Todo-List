@@ -19,7 +19,7 @@ export function initNoteLogic(notesContainer) {
                 notes = notes.filter(n => n !== note);
                 saveNotes(notes);
                 renderNotes();
-            });
+            }, () => saveNotes(notes));
             notesContainer.appendChild(card);
         });
     }

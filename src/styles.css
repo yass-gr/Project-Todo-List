@@ -508,3 +508,9 @@ main{
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+.note-date {
+  color: var(--icn-not);
+  font-size: 0.75rem;
+  margin-top: 8px;
+}

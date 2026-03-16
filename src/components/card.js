@@ -1,6 +1,6 @@
 import "../styles.css";
 
-export function createGroupCard(group, onGroupToggle = null, onDelete = null) {
+export function createGroupCard(group, onGroupToggle = null, onDelete = null, onSave = null) {
     const card = document.createElement("div");
     card.className = "group-card";
 
@@ -83,6 +83,7 @@ export function createGroupCard(group, onGroupToggle = null, onDelete = null) {
             taskText.addEventListener("blur", (e) => {
                 const idx = parseInt(e.target.dataset.index);
                 group.editTask(idx, e.target.textContent);
+                if (onSave) onSave();
             });
 
             taskText.addEventListener("keydown", (e) => {
@@ -97,6 +98,7 @@ export function createGroupCard(group, onGroupToggle = null, onDelete = null) {
                 group.deleteTask(idx);
                 renderTasks();
                 updateCard();
+                if (onSave) onSave();
             });
         });
 
@@ -115,6 +117,7 @@ export function createGroupCard(group, onGroupToggle = null, onDelete = null) {
 
     groupTitle.addEventListener("blur", () => {
         group.editName(groupTitle.textContent);
+        if (onSave) onSave();
     });
 
     groupTitle.addEventListener("keydown", (e) => {
