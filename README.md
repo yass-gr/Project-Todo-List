@@ -1,5 +1,7 @@
 # Project Todo List
 
+Live Preview : https://yass-gr.github.io/Project-Todo-List/
+
 A simple and elegant web application for managing todos and notes, built with vanilla JavaScript and bundled with Webpack.
 
 ## Features
@@ -70,6 +72,3 @@ npm run deploy
 - Material Design Icons
 - LocalStorage for persistence
 
-## License
-
-ISC
