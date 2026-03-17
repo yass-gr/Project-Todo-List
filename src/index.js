@@ -13,28 +13,16 @@ const sliderTrack = document.getElementById("slider-track");
 let todoApp = null;
 let noteApp = null;
 
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     const todosContainer = document.getElementById("todos-container");
     const notesContainer = document.getElementById("notes-container");
     
-    console.log("Todos container:", todosContainer);
-    console.log("Notes container:", notesContainer);
-    
     todoApp = initTodoLogic(todosContainer);
     noteApp = initNoteLogic(notesContainer);
     
-    // Debug: Check if notes were rendered
-    setTimeout(() => {
-        console.log("Notes container HTML after init:", notesContainer.innerHTML);
-        console.log("Number of child elements:", notesContainer.children.length);
-    }, 100);
-    
-    // Initialize UI components
     initUI();
     setSearchTab("todos");
     
-    // Force the slider to show Todos by default to match state
     sliderTrack.style.transform = "translateX(0%)";
 });
 
@@ -53,7 +41,6 @@ function initUI() {
     const noteInputSection = document.getElementById("note-input-section");
     const noteContentInput = document.getElementById("note-content-input");
 
-    // Track active tab locally since search component manages its own
     let activeTab = "todos";
 
     let tempTasks = [];
@@ -99,14 +86,12 @@ function initUI() {
     });
 
     addBtn.addEventListener("click", () => {
-        // Reset fields
         groupNameInput.value = "";
         taskInput.value = "";
         noteContentInput.value = "";
         tempTasks = [];
         renderTaskPreview();
         
-        // Configure modal based on active tab
         if (activeTab === "todos") {
             modalTitle.textContent = "Add list";
             todoInputSection.style.display = "block";

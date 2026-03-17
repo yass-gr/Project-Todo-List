@@ -9,7 +9,6 @@ export function loadTodos() {
         try {
             return JSON.parse(stored);
         } catch (e) {
-            console.error("Failed to parse todos from localStorage:", e);
             return null;
         }
     }
@@ -30,7 +29,6 @@ export function loadNotes() {
         try {
             return JSON.parse(stored);
         } catch (e) {
-            console.error("Failed to parse notes from localStorage:", e);
             return null;
         }
     }

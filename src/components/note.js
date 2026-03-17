@@ -1,11 +1,9 @@
 import "../styles.css";
 
 export function createNoteCard(note, onDelete, onSave) {
-    console.log("createNoteCard called with:", note);
     const card = document.createElement("div");
     card.className = "note-card";
     
-    // Create the delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "note-delete-btn";
     deleteBtn.innerHTML = '<span class="mdi mdi-close"></span>';
@@ -35,21 +33,16 @@ export function createNoteCard(note, onDelete, onSave) {
     card.appendChild(noteContent);
     card.appendChild(noteDate);
 
-    // Save title changes
     noteTitle.addEventListener("blur", () => {
         note.name = noteTitle.textContent || "Untitled Note";
-        console.log("Title updated to:", note.name);
         if (onSave) onSave();
     });
 
-    // Save content changes
     noteContent.addEventListener("blur", () => {
         note.edit(noteContent.textContent);
-        console.log("Content updated to:", note.content);
         if (onSave) onSave();
     });
 
-    // Optional: Handle Enter key to blur
     noteTitle.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -64,6 +57,5 @@ export function createNoteCard(note, onDelete, onSave) {
         }
     });
 
-    console.log("Created note card:", card);
     return card;
 }

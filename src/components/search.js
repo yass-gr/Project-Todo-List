@@ -7,7 +7,6 @@ export function initSearch(groups, todosContainer, createGroupCard) {
 
     function handleSearch(e) {
         const query = e.target.value.toLowerCase().trim();
-        console.log("Search input, currentTab:", currentTab, "query:", query);
 
         if (currentTab === "todos") {
             searchTodos(groups, todosContainer, query);
@@ -35,7 +34,7 @@ function searchTodos(groups, todosContainer, query) {
 
         if (card) {
             if (query === "" || matchesGroup || matchesTasks) {
-                card.style.display = ""; // Reset to CSS default (flex/block layout)
+                card.style.display = "";
             } else {
                 card.style.display = "none";
             }
@@ -44,18 +43,15 @@ function searchTodos(groups, todosContainer, query) {
 }
 
 function searchNotes(query) {
-    console.log("Searching notes with query:", query);
     const noteCards = document.querySelectorAll(".note-card");
-    console.log("Found note cards:", noteCards.length);
     noteCards.forEach(card => {
         const title = card.querySelector(".note-title")?.textContent.toLowerCase() || "";
         const content = card.querySelector(".note-content")?.textContent.toLowerCase() || "";
 
         const matches = title.includes(query) || content.includes(query);
-        console.log("Card:", title, "matches:", matches);
 
         if (query === "" || matches) {
-            card.style.display = ""; // Reset to CSS default (flex)
+            card.style.display = "";
         } else {
             card.style.display = "none";
         }
@@ -63,7 +59,6 @@ function searchNotes(query) {
 }
 
 export function setSearchTab(tab) {
-    console.log("setSearchTab called with:", tab);
     currentTab = tab;
     const searchInput = document.getElementById("search");
     if (tab === "todos") {

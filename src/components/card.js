@@ -131,7 +131,7 @@ export function createGroupCard(group, onGroupToggle = null, onDelete = null, on
         if (onDelete && typeof onDelete === 'function') {
             onDelete();
         } else {
-            card.remove(); // Fallback for previous usages if any
+            card.remove();
         }
     });
 
